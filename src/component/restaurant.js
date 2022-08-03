@@ -10,8 +10,8 @@ const Restaurant = (props) => {
   <div key ={key} className="Restaurant">
    <li key={'rest' + key}>{restaurant_name}</li>
    <li key={'owner' + key}>{full_name}</li>
-   <li key={'menu' + key}><a href='#'>menu</a></li>
-   <li key={'cont' + key}><a href='#'>contact</a></li>
+   <li key={'menu' + key}><a href='/menu'>menu</a></li>
+   <li key={'cont' + key}><a href='/contact'>contact</a></li>
   </div>
  )
 }
