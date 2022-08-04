@@ -1,10 +1,10 @@
-import Restaurants from './containers/restaurants';
+import Main from './containers/main';
 
 function App() {
   return (
 
     <div className="App">
-      <Restaurants />
+      <Main />
     </div>
   );
 }
