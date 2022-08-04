@@ -1,29 +1,38 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import Api from "../API/Api";
 
 //import { composeWithDevTools } from "redux-devtools-extension";
 
-const initialState = null
+const initialState = {
+ loading: false,
+ restaurants: [],
+ error: ''
+}
+
+export const fetchRestaurant = createAsyncThunk('restaurant/fetchRestaurants', ()=>
+ Api('restaurants')
+ )
 
 const restaurantSlice = createSlice({
  name: 'restaurantRequest',
  initialState,
- reducers: {
-  get_restaurants: (state, action) => {
-   state = action.payload
-  },
-  /*get_menues: (state, action) => {
-   state = action.payload
-  },
-  get_dishes: (state, action) => {
-   state = action.payload
-  }
-  */
+ extraReducers: builder =>{
+  builder.addCase(fetchRestaurant.pending, state =>  {
+   state.loading = true
+  })
+  builder.addCase(fetchRestaurant.fulfilled, (state, {payload}) =>{
+   state.loading = false
+   state.restaurants = payload
+   state.error = ''
+  })
+  builder.addCase(fetchRestaurant.rejected, (state, action) =>{
+   state.loading = false
+   state.restaurants = []
+   state.error = action.error.message
+  })
  }
 })
 
-
-
-// module.exports = restaurantSlice.reducer
-export const restaurantActions = restaurantSlice.actions
 
 export default restaurantSlice.reducer
