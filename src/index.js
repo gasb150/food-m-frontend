@@ -5,13 +5,11 @@ import { fetchRestaurant } from './reducers/restaurantSlice';
 import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-console.log('Initial state', store.getState())
-const fetching = store.subscribe(()=>{})
-store.dispatch(fetchRestaurant())
+console.log('Initial state', store.getState());
+store.dispatch(fetchRestaurant());
 
 root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
-
