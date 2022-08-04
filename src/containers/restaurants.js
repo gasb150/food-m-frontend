@@ -5,7 +5,6 @@ import store from '../store';
 
 const Restaurants = () => {
   const [nval, setNval] = useState([]);
-  console.log(fetchRestaurant.restaurant);
   useEffect(() => {
     store.dispatch(fetchRestaurant()).then(({ payload }) => (setNval(payload)));
   }, []);
@@ -14,7 +13,7 @@ const Restaurants = () => {
       {
       nval.map((rest) => (
         <div key={`r ${rest.id}`}>
-          <Restaurant restaurant={rest} />
+          <Restaurant owner={rest.owner} menu={rest.menu} id={rest.id} name={rest.name} />
         </div>
       ))
       }

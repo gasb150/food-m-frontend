@@ -1,3 +1,4 @@
+import Footer from './containers/footer';
 import Main from './containers/main';
 
 function App() {
@@ -5,6 +6,7 @@ function App() {
 
     <div className="App">
       <Main />
+      <Footer />
     </div>
   );
 }
